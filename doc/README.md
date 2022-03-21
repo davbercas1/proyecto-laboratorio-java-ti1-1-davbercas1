@@ -1,4 +1,4 @@
-# Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso  \<XX\>/\<YY\>)
+# Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso  21/22)
 Autor/a: David Berrocal Castellano   uvus: davbercas1
 
 El dataset tiene información sobre las diferentes películas lanzadas por el estudio Disney, con la intención de recoger esta información y poder trabajar sobre ella.
