@@ -1,12 +1,12 @@
-package fp;
+package fp.pelicula;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import fp.Categoria;
-import fp.Genero;
+import fp.pelicula.Categoria;
+import fp.pelicula.Genero;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula> {
 	private String titulo;
 	private LocalDate fecha;
 	private Genero genero;
