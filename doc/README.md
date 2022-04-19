@@ -11,6 +11,7 @@ El dataset tiene información sobre las diferentes películas lanzadas por el es
   * **fp.pelicula.test**: Paquete que contiene las clases de test del proyecto.
   * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
+  
 * **/data**: Contiene el dataset o datasets del proyecto
     * **\<diney_movies.csv\>**: Información sobre las diferentes películas lanzadas por el estudio Disney.
     
@@ -63,39 +64,41 @@ En el proyecto tratamos con un tipo String, un LocalDate, dos Enum (Genero y Cat
 #### Tipos auxiliares
 Descripción de los tipos auxiliares que sean necesarios añadir al proyecto.
 
-### Factoría
-Descripción breve de la factoría.
+### Factoría (FactoriaCartelera)
+Lee el fichero csv, dividiendo cada fila en String.
 
-- _método 1_: Descripción del método 1.
--	_método 2_: Descripción del método 2.
 
-### Tipo Contenedor
+### Tipo Contenedor (Cartelera)
 
-Descripción breve del tipo contenedor.
+Lo usamos para incluir las diferentes peliculas en un conjunto y poder aplicar los métodos.
 
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+- _cartelera_, de tipo Set, consultable y modificable. 
+ 
 **Constructores**: 
 
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
+- C1: Constructor vacío, no hay que pasar ningún argumento.
+- C2: Constructor a partir de un conjunto de películas.
 
 **Restricciones**:
  
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
+- No tiene restricciones
 
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
+**Criterio de igualdad**: Las carteleras serán iguales si sus elementos son los mismos.
+
+**Criterio de ordenación**: No tiene ningún criterio de ordenación.
 
 **Otras operaciones**:
  
--	_método 1_: Descripción del método 1.
-- ...
+-	_numeroPeliculas()_: Obtener el número de películas en la cartelera.
+-	_añadirPelicula (Pelicula p)_: Añadir una película p al conjunto a una cartelera.
+-	_añadirCartelera (Set<Pelicula> c)_: Añadir un conjunto de películas a la cartelera.
+-	_eliminaPelicula (Pelicula p)_: Eliminar una película de la cartelera.
+-	_existePeliculaBillonaria()_: Busca si existe alguna película en la cartelera con más de 1.000.000.000 de dólares de beneficio.
+-	_numeroPeliculasMusicales()_: Cuenta las películas de género musical que existen en la cartelera.
+-	_conjuntoPeliculasPG()_: Filtra la cartelera, devolviendo un conjunto de las peliculas con la categoría PG.
+-	_peliculasPorAño()_: Mapa en el que la clave es el año en el que salió cada película y sus valores son las películas de esa año.
+-	_numeroPelisPorMes()_: Mapa en el que la clave es el mes que salió cada película y su valor es el número de peliculas que salieron ese mes.
+
+
