@@ -17,6 +17,7 @@ public class PeliculaTest {
 		System.out.println(p2);
 		
 		System.out.println(p1.getFecha());
+		System.out.println(p1==p3);
 		System.out.println(p1.equals(p3));
 		p1.setFecha(LocalDate.of(2022, 03, 20));
 		p1.setGenero(Genero.HORROR);

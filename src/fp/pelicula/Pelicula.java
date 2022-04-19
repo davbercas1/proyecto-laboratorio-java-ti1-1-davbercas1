@@ -3,8 +3,6 @@ package fp.pelicula;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import fp.pelicula.Categoria;
-import fp.pelicula.Genero;
 
 public class Pelicula implements Comparable<Pelicula> {
 	private String titulo;
@@ -19,9 +17,6 @@ public class Pelicula implements Comparable<Pelicula> {
 		if (f.getYear() < 1923) {  //Disney se fundo en 1923
 			throw new IllegalArgumentException("Año invalido en constructor de fecha = "+ f + ", (" + f.getYear()+ ")." );
 		}
-		//if (t.length() > 38) {
-			//t.replace(oldChar, newChar)
-		//}
 		titulo = t;
 		fecha = f;
 		genero = g;
@@ -40,40 +35,180 @@ public class Pelicula implements Comparable<Pelicula> {
 		beneficio_inflacion = Long.valueOf(0);
 	}
 	
+	/*
 	//Constructor 3 (usando un String como en el csv) ej: "Aladdin,1992-11-11,Comedy,G,217350219,441969178"
 	public Pelicula (String s) {
 		String[] trozos = s.split(",");
-		titulo = trozos[0].trim();
-		fecha = LocalDate.parse(trozos[1], DateTimeFormatter.ofPattern("y-M-d"));
+		if (trozos.length == 7) {
+			titulo = trozos[0].trim() + trozos[1].trim().replace("…","...");
+			
+			fecha = LocalDate.parse(trozos[2], DateTimeFormatter.ofPattern("y-M-d"));
+			
+			String g = trozos[3].trim().toUpperCase();
+			if (g.equals("")) {
+				genero = Genero.NOT_CLASSIFIED;
+			} else if (g.equals("ROMANTIC COMEDY")) {
+				genero = Genero.ROMANTIC_COMEDY;
+			} else if (g.equals("BLACK COMEDY")) {
+				genero = Genero.BLACK_COMEDY;
+			} else if (g.equals("THRILLER/SUSPENSE")) {
+				genero = Genero.THRILLER;	
+			} else if (g.equals("CONCERT/PERFORMANCE")) {
+				genero = Genero.PERFORMANCE;		
+			} else {
+				genero = Genero.valueOf(g);
+			}
+			
+			String cat = trozos[4].trim();
+			if (cat.equals("G")) {
+				categoria = Categoria.G;
+			}
+			else if (cat.equals("PG")) {
+				categoria = Categoria.PG;
+			}
+			else if (cat.equals("R")) {
+				categoria = Categoria.R;
+			}
+			else if (cat.equals("PG_13")) {
+				categoria = Categoria.PG_13;
+			}
+			else {
+				categoria = Categoria.NOT_RATED;
+			}
+			
+			beneficio = Long.valueOf(trozos[5].trim()).longValue();
+			beneficio_inflacion = Long.valueOf(trozos[6].trim()).longValue();
+		} else if (trozos.length == 8) {
+			
+			titulo = trozos[0].trim() + trozos[1].trim() + trozos[2].trim().replace("…","...");
+			
+			fecha = LocalDate.parse(trozos[3], DateTimeFormatter.ofPattern("y-M-d"));
+			
+			String g = trozos[4].trim().toUpperCase();
+			if (g.equals("")) {
+				genero = Genero.NOT_CLASSIFIED;
+			} else if (g.equals("ROMANTIC COMEDY")) {
+				genero = Genero.ROMANTIC_COMEDY;
+			} else if (g.equals("BLACK COMEDY")) {
+				genero = Genero.BLACK_COMEDY;
+			} else if (g.equals("THRILLER/SUSPENSE")) {
+				genero = Genero.THRILLER;	
+			} else if (g.equals("CONCERT/PERFORMANCE")) {
+				genero = Genero.PERFORMANCE;		
+			} else {
+				genero = Genero.valueOf(g);
+			}
+				
+			String cat = trozos[5].trim();
+			if (cat.equals("G")) {
+				categoria = Categoria.G;
+			}
+			else if (cat.equals("PG")) {
+				categoria = Categoria.PG;
+			}
+			else if (cat.equals("R")) {
+				categoria = Categoria.R;
+			}
+			else if (cat.equals("PG_13")) {
+				categoria = Categoria.PG_13;
+			}
+			else {
+				categoria = Categoria.NOT_RATED;
+			}
 		
-		String g = trozos[2].trim().toUpperCase();
+			
+			beneficio = Long.valueOf(trozos[6].trim()).longValue();
+			beneficio_inflacion = Long.valueOf(trozos[7].trim()).longValue();
+			
+		} else {
+
+			titulo = trozos[0].trim().replace("…","...");
+		
+			fecha = LocalDate.parse(trozos[1], DateTimeFormatter.ofPattern("y-M-d"));
+			
+			String g = trozos[2].trim().toUpperCase();
+			if (g.equals("")) {
+				genero = Genero.NOT_CLASSIFIED;
+			} else if (g.equals("ROMANTIC COMEDY")) {
+				genero = Genero.ROMANTIC_COMEDY;
+			} else if (g.equals("BLACK COMEDY")) {
+				genero = Genero.BLACK_COMEDY;
+			} else if (g.equals("THRILLER/SUSPENSE")) {
+				genero = Genero.THRILLER;	
+			} else if (g.equals("CONCERT/PERFORMANCE")) {
+				genero = Genero.PERFORMANCE;		
+			} else {
+				genero = Genero.valueOf(g);
+			}
+			
+			String cat = trozos[3].trim();
+			if (cat.equals("G")) {
+				categoria = Categoria.G;
+			}
+			else if (cat.equals("PG")) {
+				categoria = Categoria.PG;
+			}
+			else if (cat.equals("R")) {
+				categoria = Categoria.R;
+			}
+			else if (cat.equals("PG_13")) {
+				categoria = Categoria.PG_13;
+			}
+			else {
+				categoria = Categoria.NOT_RATED;
+			}
+			
+			beneficio = Long.valueOf(trozos[4].trim()).longValue();
+			beneficio_inflacion = Long.valueOf(trozos[5].trim()).longValue();
+		}
+	}
+	*/
+	public Pelicula (String s) {
+		String[] trozos = s.split(",");
+		Integer i = 1;
+		
+		if (trozos.length == 8) {
+			titulo = trozos[0].trim() + trozos[1].trim() + trozos[2].trim().replace("…","...");
+			i = 3;
+		} else if (trozos.length == 7) {
+			titulo = trozos[0].trim() + trozos[1].trim().replace("…","...");
+			i = 2;
+		} else {
+			titulo = trozos[0].trim().replace("…","...");
+		}
+		
+		fecha = LocalDate.parse(trozos[i], DateTimeFormatter.ofPattern("y-M-d"));
+			
+		String g = trozos[i+1].trim().toUpperCase();
 		if (g.equals("")) {
 			genero = Genero.NOT_CLASSIFIED;
-		}
-		else {
+		} else if (g.equals("ROMANTIC COMEDY")) {
+			genero = Genero.ROMANTIC_COMEDY;
+		} else if (g.equals("BLACK COMEDY")) {
+			genero = Genero.BLACK_COMEDY;
+		} else if (g.equals("THRILLER/SUSPENSE")) {
+			genero = Genero.THRILLER;	
+		} else if (g.equals("CONCERT/PERFORMANCE")) {
+			genero = Genero.PERFORMANCE;		
+		} else {
 			genero = Genero.valueOf(g);
 		}
-		
-		String cat = trozos[3].trim();
+			
+		String cat = trozos[i+2].trim();
 		if (cat.equals("G")) {
 			categoria = Categoria.G;
-		}
-		else if (cat.equals("PG")) {
+		} else if (cat.equals("PG")) {
 			categoria = Categoria.PG;
-		}
-		else if (cat.equals("R")) {
+		} else if (cat.equals("R")) {
 			categoria = Categoria.R;
-		}
-		else if (cat.equals("PG_13")) {
+		} else if (cat.equals("PG_13")) {
 			categoria = Categoria.PG_13;
-		}
-		else {
+		} else {
 			categoria = Categoria.NOT_RATED;
 		}
 		
-		beneficio = Long.valueOf(trozos[4].trim()).longValue();
-		beneficio_inflacion = Long.valueOf(trozos[5].trim()).longValue();
-		
+		beneficio = Long.valueOf(trozos[i+3].trim()).longValue();
+		beneficio_inflacion = Long.valueOf(trozos[i+4].trim()).longValue();
 	}
 
 	public String getTitulo() {
@@ -131,7 +266,11 @@ public class Pelicula implements Comparable<Pelicula> {
 	public Double porcentajeInflacion () {
 		Long ben = this.beneficio;
 		Long ben_i = this.beneficio_inflacion;
-		return (ben_i/ben)*100.;
+		if (ben == 0.) {
+			return 0.;
+		} else {
+			return (ben_i/ben)*100.;
+		}
 	}
 
 	@Override
