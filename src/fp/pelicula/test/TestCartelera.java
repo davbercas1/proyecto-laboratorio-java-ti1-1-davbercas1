@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedMap;
+
 import fp.pelicula.Pelicula;
 import fp.pelicula.Cartelera;
 import fp.pelicula.Categoria;
@@ -33,7 +35,13 @@ public class TestCartelera {
 		//System.out.println(c1.peliculasPorAñoStream());
 		//c1.eliminaPelicula(p1);
 		//System.out.println(c1.numeroPelisPorMes());
-
+		//System.out.println(c1.numeroPelisPorMesStream());
+		//System.out.println(c1.peliculaGeneroMasReciente(Genero.DRAMA));
+		//System.out.println(c1.titulosOrdenadosPorAntiguedadYMes(1));
+		//System.out.println(c1.numeroPeliculas(Categoria.PG));
+		//System.out.println(c1.peliMasTaquilleraPorGenero());
+		//System.out.println(c1.peoresPeliculasPorAñoOrdenado(2));
+		//System.out.println(c1.generoConMasPeliculas());
 	}
 }
 
