@@ -80,6 +80,7 @@ Lo usamos para incluir las diferentes peliculas en un conjunto y poder aplicar l
 
 - C1: Constructor vacío, no hay que pasar ningún argumento.
 - C2: Constructor a partir de un conjunto de películas.
+- C3: Constructor a partir de un Stream de películas.
 
 **Restricciones**:
  
@@ -96,9 +97,20 @@ Lo usamos para incluir las diferentes peliculas en un conjunto y poder aplicar l
 -	_añadirCartelera (Set<Pelicula> c)_: Añadir un conjunto de películas a la cartelera.
 -	_eliminaPelicula (Pelicula p)_: Eliminar una película de la cartelera.
 -	_existePeliculaBillonaria()_: Busca si existe alguna película en la cartelera con más de 1.000.000.000 de dólares de beneficio.
+-	_existePeliculaBillonariaStream()_: Lo mismo pero uso el método stream para solucionarlo.
 -	_numeroPeliculasMusicales()_: Cuenta las películas de género musical que existen en la cartelera.
+-	_numeroPeliculasMusicalesStream()_: Lo mismo pero uso el método stream para solucionarlo.
 -	_conjuntoPeliculasPG()_: Filtra la cartelera, devolviendo un conjunto de las peliculas con la categoría PG.
+-	_conjuntoPeliculasPGStream()_: Lo mismo pero uso el método stream para solucionarlo.
 -	_peliculasPorAño()_: Mapa en el que la clave es el año en el que salió cada película y sus valores son las películas de esa año.
+-	_peliculasPorAñoStream()_: Lo mismo pero uso el método stream para solucionarlo.
 -	_numeroPelisPorMes()_: Mapa en el que la clave es el mes que salió cada película y su valor es el número de peliculas que salieron ese mes.
+-	_numeroPelisPorMesStream()_: Lo mismo pero uso el método stream para solucionarlo.
+- _peliculaGeneroMasReciente()_: Le pasamos como parámetro un género y devuelve la película más reciente de ese género
+- _titulosOrdenadosPorAntiguedadYMes()_: Le pasamos como parámetro un mes (del 1 al 12) y devuelve una lista de películas ordenada de más antiguos a recientes.
+- _numeroPeliculas()_: Pasamos como parámetro una categoría y devuelve el número de películas existentes de ese género.
+- _peliMasTaquilleraPorGenero()_: Mapa en el que la clave es el género y su clave es la película mas taquillera de este género.
+- _peoresPeliculasPorAñoOrdenado()_: Pasamos como parametro un número n y devuelve un mapa en el que las claves son todos los años y los valores son una lista de n películas las cuales han sido las que menos beneficios generaron.
+- _generoConMasPeliculas()_: Función que devuelve un Entry con con el género que más peliculas han producido y el valor del número de películas de género.
 
 
